@@ -1,10 +1,17 @@
-package br.com.fiap.app.registra.veiculos.domain;
+package br.com.fiap.app.registra.veiculos.adapter.out.jpa.veiculo.entities;
 
-import br.com.fiap.app.registra.veiculos.adapter.out.jpa.veiculo.entities.VeiculoEntity;
+import br.com.fiap.app.registra.veiculos.domain.Veiculo;
 import br.com.fiap.app.registra.veiculos.domain.enums.NumeroPortasEnum;
 import br.com.fiap.app.registra.veiculos.domain.enums.StatusVeiculoEnum;
 import br.com.fiap.app.registra.veiculos.domain.enums.TipoCombustivelEnum;
 import br.com.fiap.app.registra.veiculos.domain.enums.TipoVeiculoEnum;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,27 +26,65 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Veiculo {
+@Entity(name = "CORE_VEICULO")
+public class VeiculoEntity {
 
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "MARCA")
     private String marca;
+
+    @Column(name = "MODELO")
     private String modelo;
+
+    @Column(name = "ANO")
     private Integer ano;
+
+    @Column(name = "COR")
     private String cor;
+
+    @Column(name = "PRECO")
     private BigDecimal preco;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "TIPO")
     private TipoVeiculoEnum tipo;
+
+    @Column(name = "QUILOMETRAGEM")
     private Integer quilometragem;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "TIPO_COMBUSTIVEL")
     private TipoCombustivelEnum tipoCombustivel;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "NUMERO_PORTAS")
     private NumeroPortasEnum numeroPortas;
+
+    @Column(name = "PLACA")
     private String placa;
+
+    @Column(name = "DESCRICAO")
     private String descricao;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "STATUS")
     private StatusVeiculoEnum status;
+
+    @Column(name = "DATA_CADASTRO")
     private Date dataCadastro;
+
+    @Column(name = "DATA_ATUALIZACAO")
     private Date dataAtualizacao;
+
+    @Column(name = "DATA_DELECAO")
     private Date dataDelecao;
 
-    public VeiculoEntity toEntity() {
-        return VeiculoEntity.builder()
+    public Veiculo toDomain(){
+        return Veiculo.builder()
                 .id(this.id)
                 .marca(this.marca)
                 .modelo(this.modelo)
@@ -58,22 +103,4 @@ public class Veiculo {
                 .dataDelecao(this.dataDelecao)
                 .build();
     }
-
-    public Veiculo(Veiculo veiculo) {
-        this.id = veiculo.getId();
-        this.marca = veiculo.getMarca();
-        this.modelo = veiculo.getModelo();
-        this.ano = veiculo.getAno();
-        this.cor = veiculo.getCor();
-        this.preco = veiculo.getPreco();
-        this.tipo = veiculo.getTipo();
-        this.quilometragem = veiculo.getQuilometragem();
-        this.tipoCombustivel = veiculo.getTipoCombustivel();
-        this.numeroPortas = veiculo.getNumeroPortas();
-        this.placa = veiculo.getPlaca();
-        this.descricao = veiculo.getDescricao();
-        this.status = veiculo.getStatus();
-        this.dataCadastro = veiculo.getDataCadastro();
-    }
-
 }

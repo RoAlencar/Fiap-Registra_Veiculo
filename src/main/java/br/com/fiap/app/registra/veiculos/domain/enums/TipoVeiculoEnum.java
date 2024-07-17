@@ -9,5 +9,6 @@ public enum TipoVeiculoEnum {
     PERUA,
     MINIVAN,
     ESPORTIVO,
-    FURGAO
+    FURGAO;
+
 }

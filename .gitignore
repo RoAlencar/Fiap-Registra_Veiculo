@@ -2,7 +2,7 @@
 *.class
 HELP.md
 target/
-!.mvn/wrapper/maven-wrapper.jar
+!.mvn/wrapper/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
@@ -24,6 +24,10 @@ target/
 # Log file
 *.log
 logs/
+
+##Maven
+mvnw.cmd
+mvnw
 
 # BlueJ files
 *.ctxt

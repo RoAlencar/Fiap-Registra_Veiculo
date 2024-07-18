@@ -16,18 +16,18 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(VeiculoNaoEncontradoException.class)
-    public ResponseEntity<ObjectNode> handleVeiculoInexistenteException(VeiculoNaoEncontradoException ex) {
+    public ResponseEntity<ObjectNode> handleVeiculoNaoEncontradoException(VeiculoNaoEncontradoException ex) {
         log.warn("[Veiculo - Busca Veiculo por ID] Veiculo não encontrado.");
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(converterMensagem("Veiculo não encontrado"));
     }
 
     @ExceptionHandler(ModificaVeiculoException.class)
-    public ResponseEntity<ObjectNode> handleVeiculoInexistenteException(ModificaVeiculoException ex) {
+    public ResponseEntity<ObjectNode> handleModificaVeiculoException(ModificaVeiculoException ex) {
         log.warn("[Veiculo - Atualiza Veiculo] Não foi possivel atualizar o veiculo.");
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(converterMensagem("Não foi possivel atualizar o veiculo"));
     }
 
-    private ObjectNode converterMensagem(String mensagem) {
+    ObjectNode converterMensagem(String mensagem) {
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode json = mapper.createObjectNode();
         json.put("mensagem", mensagem);

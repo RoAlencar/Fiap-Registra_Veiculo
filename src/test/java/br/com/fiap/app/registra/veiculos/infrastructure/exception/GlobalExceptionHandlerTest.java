@@ -16,7 +16,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class GlobalExceptionHandletTest {
+public class GlobalExceptionHandlerTest {
 
     GlobalExceptionHandler globalExceptionHandler = new GlobalExceptionHandler();
 
@@ -53,6 +53,14 @@ public class GlobalExceptionHandletTest {
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
         assertEquals(mockObjectNode, response.getBody());
         verify(globalExceptionHandler).converterMensagem("Não foi possivel atualizar o veiculo");
+    }
+
+    @Test
+    public void testConverterMensagem() {
+        GlobalExceptionHandler exceptionHandler = new GlobalExceptionHandler();
+        String mensagem = "Mensagem de teste";
+        ObjectNode resultado = exceptionHandler.converterMensagem(mensagem);
+        assertEquals(mensagem, resultado.get("mensagem").asText());
     }
 
 

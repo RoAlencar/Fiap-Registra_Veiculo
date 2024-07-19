@@ -1,5 +1,6 @@
 package br.com.fiap.app.registra.veiculos.utils;
 
+import br.com.fiap.app.registra.veiculos.adapter.out.jpa.veiculo.entities.VeiculoEntity;
 import br.com.fiap.app.registra.veiculos.application.dto.request.AtualizaVeiculoDto;
 import br.com.fiap.app.registra.veiculos.application.dto.request.CriarVeiculoDto;
 import br.com.fiap.app.registra.veiculos.application.dto.response.AtualizaVeiculoResponse;
@@ -35,6 +36,24 @@ public class VeiculoTestUtils {
                 .build();
     }
 
+    public static VeiculoEntity gerarVeiculoEntity() {
+        return VeiculoEntity.builder()
+                .id(1L)
+                .marca("Marca")
+                .modelo("Modelo")
+                .ano(2024)
+                .cor("Cor")
+                .tipo(TipoVeiculoEnum.FURGAO)
+                .quilometragem(0)
+                .tipoCombustivel(TipoCombustivelEnum.ELETRICO)
+                .numeroPortas(NumeroPortasEnum.QUATRO)
+                .preco(BigDecimal.valueOf(1000))
+                .placa("Placa")
+                .descricao("Descricao")
+                .status(StatusVeiculoEnum.DISPONIVEL)
+                .build();
+    }
+
     public static CriarVeiculoResponse gerarCriarVeiculoResponse() {
         return new CriarVeiculoResponse(VeiculoBaseResponse.builder()
                 .id(1L)
@@ -46,6 +65,7 @@ public class VeiculoTestUtils {
                 .quilometragem(0)
                 .tipoCombustivel(TipoCombustivelEnum.GASOLINA)
                 .numeroPortas(NumeroPortasEnum.QUATRO)
+                .tipo(TipoVeiculoEnum.SUV)
                 .placa("HTG7968")
                 .descricao("A Ferrari Purosangue é um SUV esportivo de luxo com design arrojado, motor V12 potente, e tecnologia avançada, oferecendo desempenho excepcional e conforto premium.")
                 .status(StatusVeiculoEnum.DISPONIVEL)
@@ -64,6 +84,7 @@ public class VeiculoTestUtils {
                 .quilometragem(0)
                 .tipoCombustivel(TipoCombustivelEnum.GASOLINA)
                 .numeroPortas(NumeroPortasEnum.QUATRO)
+                .tipo(TipoVeiculoEnum.SUV)
                 .placa("HTG7968")
                 .descricao("A Ferrari Purosangue é um SUV esportivo de luxo com design arrojado, motor V12 potente, e tecnologia avançada, oferecendo desempenho excepcional e conforto premium.")
                 .status(StatusVeiculoEnum.DISPONIVEL)

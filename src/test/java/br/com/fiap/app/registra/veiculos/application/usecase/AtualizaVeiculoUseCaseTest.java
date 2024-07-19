@@ -17,13 +17,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.modelmapper.ModelMapper;
 
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.openMocks;
@@ -40,7 +38,7 @@ public class AtualizaVeiculoUseCaseTest {
     private AtualizaVeiculoUseCase atualizaVeiculo;
 
     @BeforeEach
-    void SetUp(){
+    void SetUp() {
         openMocks(this);
     }
 
@@ -65,7 +63,7 @@ public class AtualizaVeiculoUseCaseTest {
 
 
     @Test
-    void ThrowsModificaVeiculoExceptionQuandoVeiculoNãoExiste(){
+    void ThrowsModificaVeiculoExceptionQuandoVeiculoNãoExiste() {
         AtualizaVeiculoDto dto = new AtualizaVeiculoDto(VeiculoTestUtils.gerarAtualizaVeiculoDto());
 
         when(veiculoRepositoryPort.findById(dto.getId())).thenReturn(Optional.empty());
@@ -75,7 +73,7 @@ public class AtualizaVeiculoUseCaseTest {
     }
 
     @Test
-    void setAtualizaVeiculo(){
+    void setAtualizaVeiculo() {
         AtualizaVeiculoDto dto = new AtualizaVeiculoDto();
         dto.setId(1L);
         dto.setMarca("Ford");

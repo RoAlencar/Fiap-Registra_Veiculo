@@ -33,3 +33,33 @@ mvn spring-boot:run
 ```
 
 Com a aplicação rodando, acesse o localhost (porta 8080), e usufrua do sistema!
+
+## Documentação 📒
+A documentação da API pode ser acessada em:
+
+
+[Swagger - Local](http://localhost:8080/swagger-ui/index.html)
+
+### Entregas do projeto
+- [x] Cadastrar um veículo para venda (Marca, modelo, ano, cor, preço)
+- [x] Consultar todos os veículos ou pelo ID
+- [x] Editar os dados do veículo
+- [x] Excluir um veículo
+
+### CI/CD
+- [] Implementar Github Actions
+- [x] Cobertura de testes unitários acima de 80%
+- [] Deploy no Openshift
+
+### Infraestrutura
+- [] Cluster Openshift Red Hat.
+- [] Objetos do kubernetes (Deployment, Service, Ingress).
+- [] Banco de dados PostgreSQL OpenShift.
+
+# Evidências
+
+### Documentação da API
+![image](/images/swagger.png)
+
+### Cobertura de testes
+![image](/images/evidencia_cobertura.png)

@@ -1,55 +1,40 @@
 name: Java CI/CD with Spring Boot
-
 on:
   push:
     branches:
-      - main  # ajuste conforme sua branch principal
+      - main
   pull_request:
     branches:
-      - main  # ajuste conforme sua branch principal
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Set up JDK
-        uses: actions/setup-java@v2
-        with:
-          java-version: '21'  # Substitua pela versão do JDK que você está utilizando
-          distribution: 'adopt'  # Adicione o parâmetro de distribuição
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '21'
+        distribution: 'zulu'
 
-      - name: Build with Maven
-        run: mvn clean install -DskipTests
+    - name: Build with Maven
+      run: mvn clean install
 
-      - name: Run Unit Tests with Debug Output
-        run: mvn test -X  # Executa os testes com saída de debug (-X)
+    - name: Archive test results
+      uses: actions/upload-artifact@v3
+      with:
+        name: surefire-reports
+        path: target/surefire-reports
+        
 
-      - name: Run Unit Tests
-        run: mvn test
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up JDK
-        uses: actions/setup-java@v2
-        with:
-          java-version: '21'  # Substitua pela versão do JDK que você está utilizando
-          distribution: 'adopt'  # Adicione o parâmetro de distribuição
-
-      - name: Deploy to Heroku
-        env:
+    - name: Deploy to Heroku
+      env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
           HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
-        run: |
+      run: |
           git remote add heroku https://git.heroku.com/${HEROKU_APP_NAME}.git
           git push heroku HEAD:main

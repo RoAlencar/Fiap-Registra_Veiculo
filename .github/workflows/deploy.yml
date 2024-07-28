@@ -62,8 +62,14 @@ jobs:
     - name: Add Heroku remote
       run: git remote add heroku https://git.heroku.com/${{ secrets.HEROKU_APP_NAME }}.git
 
+    - name: Configure upstream branch
+      run: |
+        git fetch origin
+        git branch -u origin/main main 
+        git branch -vv
+        
     - name: Push to Heroku
       run: |
         git fetch origin
-        git branch -u origin/main main  # Ajuste se o branch principal for 'master'
-        git push heroku main  # Ajuste se o branch principal for 'master'
+        git branch -u origin/main main 
+        git push heroku main 

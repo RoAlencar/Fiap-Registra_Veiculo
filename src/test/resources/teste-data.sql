@@ -1,5 +1,8 @@
-INSERT INTO veiculo (id, marca, modelo, ano, cor, preco, tipo, quilometragem, tipo_combustivel, numero_portas, placa, descricao)
-VALUES (1, 'Toyota', 'Corolla', 2024, 'Preto', 200000, 'SEDAN', 10000, 'FLEX', 'QUATRO', '123AcD', 'Descrição do veículo');
+Insert into core_veiculo (ano,cor,data_atualizacao,data_cadastro,descricao,marca,modelo,numero_portas,placa,preco,quilometragem,status,tipo,tipo_combustivel)
+Values (1960,'Preto',null,null,'Carro','Ford','Mustang','DUAS','ABC123',50000,10000,'DISPONIVEL','ESPORTIVO','GASOLINA')
 
-INSERT INTO veiculo (id, marca, modelo, ano, cor, preco, tipo, quilometragem, tipo_combustivel, numero_portas, placa, descricao)
-VALUES (2, 'Ford', 'Mustang', 2024, 'Preto', 500000, 'SEDAN', 10000, 'FLEX', 'QUATRO', '123AcD', 'Descrição do veículo');
+Insert into core_veiculo (ano,cor,data_atualizacao,data_cadastro,descricao,marca,modelo,numero_portas,placa,preco,quilometragem,status,tipo,tipo_combustivel)
+Values (1960,'Preto',null,null,'Carro','Ford','Mustang','DUAS','ABC123',50000,10000,'DISPONIVEL','ESPORTIVO','GASOLINA')
+
+Insert into core_veiculo (ano,cor,data_atualizacao,data_cadastro,descricao,marca,modelo,numero_portas,placa,preco,quilometragem,status,tipo,tipo_combustivel)
+Values (1960,'Preto',null,null,'Carro','Ford','Mustang','DUAS','ABC123',50000,10000,'DISPONIVEL','ESPORTIVO','GASOLINA')

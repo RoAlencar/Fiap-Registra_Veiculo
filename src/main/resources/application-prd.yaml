@@ -11,7 +11,7 @@ spring:
       connection-timeout: 30000
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     properties:
       hibernate:
         connection:

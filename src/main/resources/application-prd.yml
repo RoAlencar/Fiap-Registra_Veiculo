@@ -5,6 +5,7 @@ spring:
     password: ${PROD_DB_PASSWORD}
     name: Fiap-Registra_Veiculo
     hikari:
+      maximum-pool-size: 10
       idle-timeout: 30000
       connection-timeout: 30000
   jpa:

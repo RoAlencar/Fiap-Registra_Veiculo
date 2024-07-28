@@ -75,5 +75,10 @@ jobs:
         git branch -u origin/main main
         git branch -vv
 
+    - name: Configure Git credential helper
+      run: |
+        git config --global credential.helper "store --file ~/.git-credentials"
+        echo "https://oauth:${{ secrets.HEROKU_API_KEY }}@git.heroku.com" > ~/.git-credentials
+
     - name: Push to Heroku
       run: git push heroku main

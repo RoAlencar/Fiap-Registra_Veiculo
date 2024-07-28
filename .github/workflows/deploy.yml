@@ -1,0 +1,58 @@
+name: Java CI/CD with Spring Boot
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:12
+        env:
+          POSTGRES_DB: registra_veiculo_db
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: XXXI.X.MMXVII
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '21'
+        distribution: 'zulu'
+
+    - name: Build with Maven
+      run: mvn clean install
+
+    - name: Archive test results
+      uses: actions/upload-artifact@v3
+      with:
+        name: surefire-reports
+        path: target/surefire-reports
+
+    - name: Authenticate with Heroku
+      run: |
+        echo "${{ secrets.HEROKU_API_KEY }}" | heroku auth:token
+
+    - name: Deploy to Heroku
+      env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+      run: |
+          git remote add heroku https://git.heroku.com/${HEROKU_APP_NAME}.git
+          git push heroku HEAD:main

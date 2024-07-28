@@ -90,7 +90,6 @@ public class VeiculoTestUtils {
                 .status(StatusVeiculoEnum.DISPONIVEL)
                 .dataCadastro(new Date())
                 .dataAtualizacao(new Date())
-                .dataDelecao(new Date())
                 .build();
     }
 
@@ -128,7 +127,6 @@ public class VeiculoTestUtils {
                 .status(StatusVeiculoEnum.DISPONIVEL)
                 .dataCadastro(new Date())
                 .dataAtualizacao(new Date())
-                .dataDelecao(new Date())
                 .build();
     }
 

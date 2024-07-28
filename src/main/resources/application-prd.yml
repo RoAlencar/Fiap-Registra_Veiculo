@@ -11,9 +11,5 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    properties:
-      hibernate:
-        connection:
-          pool_size: 10
   profiles:
     active: prod

@@ -62,14 +62,18 @@ jobs:
     - name: Add Heroku remote
       run: git remote add heroku https://git.heroku.com/${{ secrets.HEROKU_APP_NAME }}.git
 
-    - name: Configure upstream branch
+    - name: Check repository state
+      run: |
+        git status
+        git branch -a
+        git remote -v
+
+    - name: Create and configure branch main
       run: |
         git fetch origin
-        git branch -u origin/main main 
+        git checkout -b main origin/main || git checkout main
+        git branch -u origin/main main
         git branch -vv
-        
+
     - name: Push to Heroku
-      run: |
-        git fetch origin
-        git branch -u origin/main main 
-        git push heroku main 
+      run: git push heroku main

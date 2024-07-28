@@ -57,6 +57,7 @@ A documentação da API pode ser acessada em:
 - [] Banco de dados PostgreSQL OpenShift.
 
 # Evidências
+[![Java CI/CD with Spring Boot](https://github.com/RoAlencar/Fiap-Registra_Veiculo/actions/workflows/deploy.yml/badge.svg)](https://github.com/RoAlencar/Fiap-Registra_Veiculo/actions/workflows/deploy.yml)
 
 ### Documentação da API
 ![image](/images/swagger.png)

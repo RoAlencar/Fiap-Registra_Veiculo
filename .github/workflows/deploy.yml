@@ -44,7 +44,10 @@ jobs:
       with:
         name: surefire-reports
         path: target/surefire-reports
-        
+
+    - name: Authenticate with Heroku
+      run: |
+        echo "${{ secrets.HEROKU_API_KEY }}" | heroku auth:token
 
     - name: Deploy to Heroku
       env:

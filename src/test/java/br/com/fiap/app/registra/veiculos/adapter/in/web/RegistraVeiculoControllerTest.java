@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -15,6 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@Sql(scripts = "classpath:teste-data.sql")
 public class RegistraVeiculoControllerTest {
 
     @Autowired
@@ -66,4 +68,5 @@ public class RegistraVeiculoControllerTest {
                         "    \"descricao\" : \"O Toyota Corolla é um carro compacto sofisticado, oferecendo um design elegante, interior confortável e tecnologia avançada. É conhecido por sua confiabilidade, eficiência de combustível e segurança \"\n" +
                         "}")).andExpect(status().isOk());
     }
+
 }

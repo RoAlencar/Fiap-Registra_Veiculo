@@ -45,11 +45,40 @@ jobs:
         name: surefire-reports
         path: target/surefire-reports
         
-
-    - name: Deploy to Heroku
-      env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-          HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+    - name: Install Heroku CLI
       run: |
-          git remote add heroku https://git.heroku.com/${HEROKU_APP_NAME}.git
-          git push heroku HEAD:main
+        curl https://cli-assets.heroku.com/install.sh | sh
+        heroku --version
+        
+    - name: Authenticate with Heroku
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      run: |
+        echo "machine api.heroku.com" > ~/.netrc
+        echo "login" >> ~/.netrc
+        echo "password=${HEROKU_API_KEY}" >> ~/.netrc
+        chmod 600 ~/.netrc
+
+    - name: Add Heroku remote
+      run: git remote add heroku https://git.heroku.com/${{ secrets.HEROKU_APP_NAME }}.git
+
+    - name: Check repository state
+      run: |
+        git status
+        git branch -a
+        git remote -v
+
+    - name: Create and configure branch main
+      run: |
+        git fetch origin
+        git checkout -b main origin/main || git checkout main
+        git branch -u origin/main main
+        git branch -vv
+
+    - name: Configure Git credential helper
+      run: |
+        git config --global credential.helper "store --file ~/.git-credentials"
+        echo "https://oauth:${{ secrets.HEROKU_API_KEY }}@git.heroku.com" > ~/.git-credentials
+
+    - name: Push to Heroku
+      run: git push heroku main

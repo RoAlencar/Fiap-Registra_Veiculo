@@ -80,9 +80,6 @@ public class VeiculoEntity {
     @Column(name = "DATA_ATUALIZACAO")
     private Date dataAtualizacao;
 
-    @Column(name = "DATA_DELECAO")
-    private Date dataDelecao;
-
     public Veiculo toDomain(){
         return Veiculo.builder()
                 .id(this.id)
@@ -100,7 +97,6 @@ public class VeiculoEntity {
                 .status(this.status)
                 .dataCadastro(this.dataCadastro)
                 .dataAtualizacao(this.dataAtualizacao)
-                .dataDelecao(this.dataDelecao)
                 .build();
     }
 }

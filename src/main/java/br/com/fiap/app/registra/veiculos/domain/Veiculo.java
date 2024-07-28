@@ -36,7 +36,6 @@ public class Veiculo {
     private StatusVeiculoEnum status;
     private Date dataCadastro;
     private Date dataAtualizacao;
-    private Date dataDelecao;
 
     public VeiculoEntity toEntity() {
         return VeiculoEntity.builder()
@@ -55,7 +54,6 @@ public class Veiculo {
                 .status(this.status)
                 .dataCadastro(this.dataCadastro)
                 .dataAtualizacao(this.dataAtualizacao)
-                .dataDelecao(this.dataDelecao)
                 .build();
     }
 

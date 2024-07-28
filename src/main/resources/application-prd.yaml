@@ -4,3 +4,10 @@ spring:
     username: ${PROD_DB_USERNAME}
     password: ${PROD_DB_PASSWORD}
     name: Fiap-Registra_Veiculo
+    hikari:
+      maximum-pool-size: 50
+  jpa:
+    hibernate:
+      ddl-auto: none
+  profiles:
+    active: prod

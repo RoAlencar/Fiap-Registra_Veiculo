@@ -44,7 +44,12 @@ jobs:
       with:
         name: surefire-reports
         path: target/surefire-reports
-
+        
+    - name: Install Heroku CLI
+      run: |
+        curl https://cli-assets.heroku.com/install.sh | sh
+        heroku --version
+        
     - name: Authenticate with Heroku
       run: |
         echo "${{ secrets.HEROKU_API_KEY }}" | heroku auth:token

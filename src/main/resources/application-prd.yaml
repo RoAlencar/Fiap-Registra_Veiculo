@@ -5,7 +5,7 @@ spring:
     password: ${PROD_DB_PASSWORD}
     name: Fiap-Registra_Veiculo
     hikari:
-      maximum-pool-size: 50
+      maximum-pool-size: 10
   jpa:
     hibernate:
       ddl-auto: none

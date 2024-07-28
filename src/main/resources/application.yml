@@ -26,6 +26,9 @@ spring:
         hibernate:
           SQL: DEBUG
           type: TRACE
+  sql:
+    init:
+      mode: always
 name: Archive test results
 uses: actions/upload-artifact@v3
 with:

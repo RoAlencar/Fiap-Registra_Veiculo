@@ -39,8 +39,8 @@ Com a aplicação rodando, acesse o localhost (porta 8080), e usufrua do sistema
 ## Documentação 📒
 A documentação da API pode ser acessada em:
 
-
-[Swagger - Local](http://localhost:8080/swagger-ui/index.html)
+* [Swagger - Local](http://localhost:8080/swagger-ui/index.html)
+* [Swagger - Heroku](https://registra-veiculo-f268b20c9e70.herokuapp.com/swagger-ui/index.html#/)
 
 ### Entregas do projeto
 - [x] Cadastrar um veículo para venda (Marca, modelo, ano, cor, preço)

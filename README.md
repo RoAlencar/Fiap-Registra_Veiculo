@@ -4,6 +4,8 @@ Fiap Registra Veiculos API 🚗
 </h1>
 <br>
 
+[![Java CI/CD with Spring Boot](https://github.com/RoAlencar/Fiap-Registra_Veiculo/actions/workflows/deploy.yml/badge.svg)](https://github.com/RoAlencar/Fiap-Registra_Veiculo/actions/workflows/deploy.yml)
+
 ## 💬 Sobre o repositório
 
 O Registra Veiculos consiste em um sistema que é utilizado em uma empresa de revenda de veículos automotores, que disponibiliza uma plataforma para cadastro, vendas, gerenciamento e pagamento de veículos.
@@ -47,20 +49,34 @@ A documentação da API pode ser acessada em:
 - [x] Excluir um veículo
 
 ### CI/CD
-- [] Implementar Github Actions
+- [X] Implementar Github Actions
 - [x] Cobertura de testes unitários acima de 80%
-- [] Deploy no Openshift
+- [X] Deploy no Heroku
 
 ### Infraestrutura
-- [] Cluster Openshift Red Hat.
-- [] Objetos do kubernetes (Deployment, Service, Ingress).
-- [] Banco de dados PostgreSQL OpenShift.
+- [X] Cluster Heroku 
+- [X] Banco de dados PostgreSQL no Heroku.
+- [X] Objetos do Kubernets (Deployment, Service, Ingress)
 
 # Evidências
-[![Java CI/CD with Spring Boot](https://github.com/RoAlencar/Fiap-Registra_Veiculo/actions/workflows/deploy.yml/badge.svg)](https://github.com/RoAlencar/Fiap-Registra_Veiculo/actions/workflows/deploy.yml)
 
 ### Documentação da API
 ![image](/images/swagger.png)
 
+### CI/CD
+![image](/images/githubActions.png)
+
 ### Cobertura de testes
 ![image](/images/evidencia_cobertura.png)
+
+### Deploy K8s (Heroku)
+![image](/images/dashboardHeroku.png)
+
+### Evidencias dos recursos criados no Heroku
+![image](/images/evidenciasRecursosHeroku.png)
+
+### Desenho da arquitetura Hexagonal
+![image](/images/arquiteturaHexagonal.png)
+
+### Banco de dados (Postgres)
+![image](/images/bancoPostgres.png)
